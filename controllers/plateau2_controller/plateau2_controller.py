@@ -1,4 +1,4 @@
-"""my_controller controller."""
+"""plateau2_controller controller."""
 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
