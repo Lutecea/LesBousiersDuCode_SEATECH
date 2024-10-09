@@ -5,7 +5,7 @@
 from controller import Robot, Motor
 
 
-class BobRobot: 
+class BobRobot(Robot): 
     right_wheel = None
     left_wheel = None
 
