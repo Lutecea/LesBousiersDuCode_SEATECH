@@ -1,2 +1,2 @@
-# Robotique_SEATECH
-Le proj de robotique
+# Les Bousiers du code 
+On pousse du code !
