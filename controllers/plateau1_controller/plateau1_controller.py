@@ -9,6 +9,22 @@ class BobRobot(Robot):
     right_wheel = None
     left_wheel = None
 
+    def __init__(self):
+        super().__init__()
+
+        self.left_wheel:Motor = self.getDevice('left wheel')
+        self.right_wheel:Motor = self.getDevice('right wheel')
+
+        self.left_wheel:self.setPosition(float('inf'))
+        self.right_wheel:self.setPosition(float('inf'))
+
+        self.left_wheel:self.setVelocity(0.0)
+        self.right_wheel:self.setVelocity(0.0)
+        
+    def Beyblade(self) :
+        self.right_wheel.setVelocity(10.0)
+        self.left_wheel.setVelocity(-10.0)
+
 # create the Robot instance.
 robot = BobRobot()
 
@@ -17,14 +33,6 @@ timestep = int(robot.getBasicTimeStep())
 
 # You should insert a getDevice-like function in order to get the
 # instance of a device of the robot. Something like:
-motor1 = robot.getDevice('left wheel')
-motor2 = robot.getDevice('right wheel')
-
-motor1.setPosition(float('inf'))
-motor1.setVelocity(0.0)
-
-motor2.setPosition(float('inf'))
-motor2.setVelocity(0.0)
 
 
 #  ds = robot.getDevice('dsname')
@@ -36,9 +44,7 @@ while robot.step(timestep) != -1:
     # Read the sensors:
     # Enter here functions to read sensor data, like:
     #  val = ds.getValue()
-    motor1.setVelocity(10.0)
-    # Process sensor data here.
-    motor2.setVelocity(-10.0)
+    robot.beyblade()
     # Enter here functions to send actuator commands, like:
     #  motor.setPosition(10.0)
     pass
