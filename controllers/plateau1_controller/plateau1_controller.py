@@ -44,7 +44,7 @@ while robot.step(timestep) != -1:
     # Read the sensors:
     # Enter here functions to read sensor data, like:
     #  val = ds.getValue()
-    robot.beyblade()
+    robot.Beyblade()
     # Enter here functions to send actuator commands, like:
     #  motor.setPosition(10.0)
     pass
