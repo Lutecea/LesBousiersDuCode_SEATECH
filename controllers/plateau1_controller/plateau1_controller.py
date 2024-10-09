@@ -15,11 +15,11 @@ class BobRobot(Robot):
         self.left_wheel:Motor = self.getDevice('left wheel')
         self.right_wheel:Motor = self.getDevice('right wheel')
 
-        self.left_wheel:self.setPosition(float('inf'))
-        self.right_wheel:self.setPosition(float('inf'))
+        self.left_wheel.setPosition(float('inf'))
+        self.right_wheel.setPosition(float('inf'))
 
-        self.left_wheel:self.setVelocity(0.0)
-        self.right_wheel:self.setVelocity(0.0)
+        self.left_wheel.setVelocity(0.0)
+        self.right_wheel.setVelocity(0.0)
         
     def Beyblade(self) :
         self.right_wheel.setVelocity(10.0)
