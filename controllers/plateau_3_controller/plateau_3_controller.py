@@ -27,7 +27,7 @@ class Robot3(Robot):
 
 
         # Vitesse de base des rotors
-        self.base_speed = 56.0
+        self.base_speed = 55.5
 
 
         # Récupération du gyroscope
@@ -39,21 +39,24 @@ class Robot3(Robot):
         self.gps: GPS = self.getDevice('gps')
         self.gps.enable(int(self.getBasicTimeStep()))
 
+        # Gestion des phases
+        self.movement_phase = "x" # Changeant
+        self.phase_duration_z = 1000 # En ms
+        self.phase_duration_x = 100
+        self.phase_duration_y = 100
+        self.phase_timer = 0 # Timer de phase en cours
 
         # Points de passage
         self.waypoints = [
 
-            [1.0, -5.0, 10.0],
-            [1.0, 2.0, 9.0],
-            [6.0, 8.0, 4.0],
-            [4.0, 3.0, 4.0],
-            [5.0, 1.0, 9.0],
-            [10.0, 9.0, 2.0]
+            [-50.0, 60.0, 10.0],
+            [-61.0, 72.0, 5.0],
+ 
         ]
 
         self.checked_waypoints = []  # Points de passage déjà atteints
         self.current_target = self.waypoints[0]  # Premier point de passage
-        self.position_tolerance = 0.3  # Tolérance de position
+        self.position_tolerance = 0.2  # Tolérance de position
 
 
         # Variables pour l'atterrissage
@@ -103,91 +106,87 @@ class Robot3(Robot):
 
 
     def move_to_target(self):
+        current_position = self.get_current_position()
+        self.phase_timer += int(self.getBasicTimeStep())
 
-        if self.current_target:
-            current_position = self.get_current_position()
+        if self.movement_phase == "z":
+            # Déplacement en z
+            if abs(current_position[2] - self.current_target[2]) > self.position_tolerance:
+                
+                if current_position[2] < self.current_target[2]:
 
+                    # Déplacement vers le haut
+                    print("Déplacement vers le haut")  # Debug
+                    self.m1_motor.setVelocity(-55.99)
+                    self.m2_motor.setVelocity(55.99)
+                    self.m3_motor.setVelocity(-55.99)
+                    self.m4_motor.setVelocity(55.99)
 
-            # Déplacement en x
+                else:
 
+                    # Déplacement vers le bas
+                    print("Déplacement vers le bas")  # Debug
+                    self.m1_motor.setVelocity(-55.0001)
+                    self.m2_motor.setVelocity(55.0001)
+                    self.m3_motor.setVelocity(-55.0001)
+                    self.m4_motor.setVelocity(55.0001)
+            
+            if self.phase_timer >= self.phase_duration_z:
+                self.movement_phase="y" # Passage à la phase y
+                self.phase_imer = 0
+                print("Passage à la phase y")
+
+        elif self.movement_phase == "y":
+            # Déplacement en y
             if abs(current_position[0] - self.current_target[0]) > self.position_tolerance:
 
                 if current_position[0] < self.current_target[0]:
 
                     # Déplacement vers la droite
+                    print("Déplacement vers la droite") 
+                    self.m4_motor.setVelocity(55.102)
+                    self.m2_motor.setVelocity(55.101)
+                    self.m3_motor.setVelocity(-55.102)
+                    self.m1_motor.setVelocity(-55.101)
 
-                    print("Déplacement vers la droite (x)")  # Debug
+                else:
+                    print("Déplacement vers la gauche")
+                    self.m4_motor.setVelocity(55.101)
+                    self.m2_motor.setVelocity(55.102)
+                    self.m3_motor.setVelocity(-55.101)
+                    self.m1_motor.setVelocity(-55.102)
+            
+            if self.phase_timer >= self.phase_duration_x:
+                self.movement_phase="x" # Passage à la phase x
+                self.phase_timer = 0
+                print("Passage à la phase x")
 
-                    self.m4_motor.setVelocity(55.5)
-                    self.m2_motor.setVelocity(55.0)
-                    self.m3_motor.setVelocity(-55.0)
-                    self.m1_motor.setVelocity(-55.5)
-
-                elif current_position[0] == self.current_target[0]:
-                    self.m4_motor.setVelocity(55.5)
-                    self.m2_motor.setVelocity(55.0)
-                    self.m3_motor.setVelocity(-55.0)
-                    self.m1_motor.setVelocity(-55.5)
-
-
-            # Déplacement en y
-
+        elif self.movement_phase == "x":
+            # Déplacement en x
             if abs(current_position[1] - self.current_target[1]) > self.position_tolerance:
-
                 if current_position[1] < self.current_target[1]:
 
                     # Déplacement vers l'avant
-                    print("Déplacement vers l'avant (y)") 
-                    self.m2_motor.setVelocity(55.5)
-                    self.m4_motor.setVelocity(55.0)
-                    self.m1_motor.setVelocity(-55.0)
-                    self.m3_motor.setVelocity(-55.5)
+                    print("Déplacement vers l'avant") 
+                    self.m2_motor.setVelocity(55.102)
+                    self.m4_motor.setVelocity(55.101)
+                    self.m1_motor.setVelocity(-55.101)
+                    self.m3_motor.setVelocity(-55.102)
 
                     # Déplacement vers l'arrière
-                elif current_position[1] == self.current_target[1]:
-                    self.m2_motor.setVelocity(55.5)
-                    self.m4_motor.setVelocity(55.0)
-                    self.m1_motor.setVelocity(-55.0)
-                    self.m3_motor.setVelocity(-55.5)
+                else: 
+                    print("Déplacent vers l'arrière")
+                    self.m2_motor.setVelocity(55.101)
+                    self.m4_motor.setVelocity(55.102)
+                    self.m1_motor.setVelocity(-55.102)
+                    self.m3_motor.setVelocity(-55.101)
 
+            if self.phase_timer >= self.phase_duration_y:
+                self.movement_phase="z" # Passage à la phase y
+                self.phase_timer = 0
+                print("Passage à la phase z")
 
-            # Déplacement en z
-
-            if abs(current_position[2] - self.current_target[2]) > self.position_tolerance:
-
-                if current_position[2] < self.current_target[2]:
-
-                    # Déplacement vers le haut
-                    print("Déplacement vers le haut (z)")  # Debug
-                    self.m1_motor.setVelocity(-55.5)
-                    self.m2_motor.setVelocity(55.5)
-                    self.m3_motor.setVelocity(-55.5)
-                    self.m4_motor.setVelocity(55.5)
-
-                    # Stabilisation à la même altitude
-                elif current_position[2] == self.current_target[2]:
-                    print("Altitude du waypoint atteinte")
-                    self.m1_motor.setVelocity(-55.0)
-                    self.m2_motor.setVelocity(55.0)
-                    self.m3_motor.setVelocity(-55.0)
-                    self.m4_motor.setVelocity(55.0)
-
-                else:
-
-                    # Déplacement vers le bas
-                    print("Déplacement vers le bas (z)")  # Debug
-                    self.m1_motor.setVelocity(-55.0)
-                    self.m2_motor.setVelocity(55.0)
-                    self.m3_motor.setVelocity(-55.0)
-                    self.m4_motor.setVelocity(55.0)
-
-            else:
-
-                # Arrêt des moteurs en z
-                self.m1_motor.setVelocity(-55.0)
-                self.m2_motor.setVelocity(55.0)
-                self.m3_motor.setVelocity(-55.0)
-                self.m4_motor.setVelocity(55.0)
+        
 
 
     def land_drone(self):
