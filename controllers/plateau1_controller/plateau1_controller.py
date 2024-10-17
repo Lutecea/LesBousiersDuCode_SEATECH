@@ -5,8 +5,6 @@ from controller import Robot, Motor, DistanceSensor
 import time
 
 
-#A FAIRE DEMAIN : POUR LA DERNIERE PARTIE : Détecter la position et mettre un angle pour faire partir le robot dans la bonne direction et arriver dans la zone jaune
-
 #================================================================
 #                           Saucisse
 #================================================================
@@ -15,7 +13,6 @@ class Saucisse(Robot):
     def __init__(self):
         super().__init__()
         self.moteur = Moteurs(self)
-        #self.casterwheel=CasterWheel(self)
         self.capteurs=Capteurs(self)
 
     def run(self):
@@ -37,11 +34,6 @@ class Saucisse(Robot):
 
         else :
             self.moteur.avance()
-
-        
-
-
-
 
 #================================================================
 #                           Moteurs
@@ -248,10 +240,10 @@ robot = Saucisse()
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
 
-
+#Voici la boucle !
 while robot.step(timestep) != -1:
 
-    robot.run()
+    robot.run() #Incroyable je sais.
     pass
 
 

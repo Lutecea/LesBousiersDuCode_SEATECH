@@ -5,8 +5,6 @@ from controller import Robot, Motor, DistanceSensor, GPS
 import time
 
 
-#A FAIRE DEMAIN : POUR LA DERNIERE PARTIE : Détecter la position et mettre un angle pour faire partir le robot dans la bonne direction et arriver dans la zone jaune
-
 #================================================================
 #                           SolidSnake
 #================================================================
