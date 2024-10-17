@@ -29,8 +29,10 @@ WorldInfo {
   }
 }
 Viewpoint {
-  orientation 0.23329146309894216 -0.7203398294122577 -0.6532117753129336 5.535702427195413
-  position -133.02052929384698 -19.954310382801655 74.45120912452067
+  orientation 0.2485578581561006 -0.7311870182061496 -0.6352830357845639 5.457508156599912
+  position -114.70104287305442 -48.186442805191405 76.58511159347361
+  follow "Le blaireau"
+  followType "None"
 }
 TexturedBackgroundLight {
 }
@@ -280,10 +282,14 @@ Crazyflie {
   rotation 0 0 1 1.552
   name "Le blaireau"
   controller "plateau_3_controller"
+  controllerArgs [
+    ""
+  ]
 }
 Pioneer3dx {
   translation -15 -15.5 0.1
   name "Gnominator"
+  controller "plateau1_controller"
   extensionSlot [
     Gnome {
     }
@@ -293,6 +299,7 @@ Pioneer3dx {
   translation -16 23 0.03
   rotation 0 0 1 2.354
   name "Solid Snake"
+  controller "plateau2_controller"
   extensionSlot [
     CardboardBox {
     }
