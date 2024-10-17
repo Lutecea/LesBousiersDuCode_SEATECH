@@ -27,10 +27,10 @@ class SolidSnake(Robot):
         if pos_cotegauche_avant > 300 and pos_cotedroit_avant > 300 :
             self.moteur.avance()
         
-        elif pos_cotegauche_avant > 300 and pos_cotegauche_avant > pos_cotedroit_avant: 
+        elif pos_cotegauche_avant > 350 and pos_cotegauche_avant > pos_cotedroit_avant: 
             self.moteur.tourne_gauche()
 
-        elif pos_cotedroit_avant > 300 and pos_cotedroit_avant >  pos_cotegauche_avant:
+        elif pos_cotedroit_avant > 350 and pos_cotedroit_avant >  pos_cotegauche_avant:
             self.moteur.tourne_droite()
 
         else :
