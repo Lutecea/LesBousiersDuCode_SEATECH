@@ -30,7 +30,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 0.23329146309894216 -0.7203398294122577 -0.6532117753129336 5.535702427195413
-  position -74.13241340083864 -21.40533863109525 43.51496801459069
+  position -133.02052929384698 -19.954310382801655 74.45120912452067
 }
 TexturedBackgroundLight {
 }
@@ -276,9 +276,10 @@ RubberDuck {
   scale 18
 }
 Crazyflie {
-  rotation 0.9980656780066601 -0.007130710677753083 -0.06175803875072578 4.022393266928818e-14
+  translation -47 57 0.01
+  rotation 0 0 1 1.552
   name "Le blaireau"
-  controller "<none>"
+  controller "plateau_3_controller"
 }
 Pioneer3dx {
   translation -15 -15.5 0.1
