@@ -115,6 +115,7 @@ class Capteurs():
     
     def __init__(self,robot:Saucisse):
         super().__init__()
+        #init des capteurs, on les utilise pas tous mais flemme j'ai tout fait je les garde
         self.so0:DistanceSensor = robot.getDevice('so0')
         self.so0.enable(int(robot.getBasicTimeStep()))
 
@@ -219,16 +220,6 @@ class Capteurs():
         print(f"AVANT : {valueavant}" )
         return valueavant
     
-    # def detectdroite_avant(self):
-    #     valuegauche = (self.get_PositionSensorso0()) + self.get_PositionSensorso1() + self.get_PositionSensorso2() / 3
-    #     print(f"DROITE : {valuegauche}" )
-    #     return valuegauche
-    
-    # def detectgauche_avant(self):
-    #     valuedroite = self.get_PositionSensorso5() + self.get_PositionSensorso6() + (self.get_PositionSensorso7())  / 3
-    #     print(f"GAUCHE : {valuedroite}" )
-    #     return valuedroite
-
     def detectdroite_avant(self):
         val = (self.get_PositionSensorso0() +self.get_PositionSensorso1() + self.get_PositionSensorso2()) /3
         print(f"DROITE : {val}" )
@@ -239,17 +230,6 @@ class Capteurs():
         val = (self.get_PositionSensorso7() +self.get_PositionSensorso6() + self.get_PositionSensorso5() )/3
         print(f"GAUCHE : {val}" )
         return val
-    
-    # def detectdroite_avantcritique(self):
-    #     val = self.get_PositionSensorso8()
-    #     print(f"DROITE CRITIQUE : {val}" )
-    #     return val
-    
-
-    # def detectgauche_avantcritique(self):
-    #     val = self.get_PositionSensorso15()
-    #     print(f"GAUCHE CRITIQUE : {val}" )
-    #     return val
 
 
     
@@ -258,7 +238,9 @@ class Capteurs():
 
     
 
-
+#================================================================
+#                 Le main (la boucle comme tu veux)
+#================================================================
 
 # create the Robot instance.
 robot = Saucisse()
