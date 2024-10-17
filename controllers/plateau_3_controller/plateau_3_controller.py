@@ -118,36 +118,16 @@ class Robot3(Robot):
 
                     print("Déplacement vers la droite (x)")  # Debug
 
-                    self.m4_motor.setVelocity(57.0)
-                    self.m2_motor.setVelocity(56.0)
-                    self.m3_motor.setVelocity(-56.0)
-                    self.m1_motor.setVelocity(-57.0)
+                    self.m4_motor.setVelocity(55.5)
+                    self.m2_motor.setVelocity(55.0)
+                    self.m3_motor.setVelocity(-55.0)
+                    self.m1_motor.setVelocity(-55.5)
 
                 elif current_position[0] == self.current_target[0]:
-                    self.m4_motor.setVelocity(56.0)
-                    self.m2_motor.setVelocity(56.0)
-                    self.m3_motor.setVelocity(-56.0)
-                    self.m1_motor.setVelocity(-56.0)
-
-                else:
-
-                    # Déplacement vers la gauche
-
-                    print("Déplacement vers la gauche (x)")  # Debug
-
-                    self.m4_motor.setVelocity(55.0)
-                    self.m2_motor.setVelocity(57.0)
-                    self.m3_motor.setVelocity(-57.0)
-                    self.m1_motor.setVelocity(-55.0)
-
-            else:
-
-                # Arrêt des moteurs en x
-
-                self.m4_motor.setVelocity(56.0)
-                self.m2_motor.setVelocity(56.0)
-                self.m3_motor.setVelocity(-56.0)
-                self.m1_motor.setVelocity(-56.0)
+                    self.m4_motor.setVelocity(55.5)
+                    self.m2_motor.setVelocity(55.0)
+                    self.m3_motor.setVelocity(-55.0)
+                    self.m1_motor.setVelocity(-55.5)
 
 
             # Déplacement en y
@@ -158,37 +138,17 @@ class Robot3(Robot):
 
                     # Déplacement vers l'avant
                     print("Déplacement vers l'avant (y)") 
-                    self.m2_motor.setVelocity(56.0)
-                    self.m4_motor.setVelocity(56.0)
-                    self.m1_motor.setVelocity(-56.0)
-                    self.m3_motor.setVelocity(-56.0)
-
-                    # 
-                elif current_position[1] == self.current_target[1]:
-                    self.m2_motor.setVelocity(56.0)
-                    self.m4_motor.setVelocity(56.0)
-                    self.m1_motor.setVelocity(-56.0)
-                    self.m3_motor.setVelocity(-56.0)
-
-                else:
+                    self.m2_motor.setVelocity(55.5)
+                    self.m4_motor.setVelocity(55.0)
+                    self.m1_motor.setVelocity(-55.0)
+                    self.m3_motor.setVelocity(-55.5)
 
                     # Déplacement vers l'arrière
-
-                    print("Déplacement vers l'arrière (y)")  # Debug
-
-                    self.m2_motor.setVelocity(55.0)
-                    self.m4_motor.setVelocity(56.0)
-                    self.m1_motor.setVelocity(-56.0)
-                    self.m3_motor.setVelocity(-55.0)
-
-            else:
-
-                # Arrêt des moteurs en y
-
-                self.m2_motor.setVelocity(56.0)
-                self.m4_motor.setVelocity(56.0)
-                self.m1_motor.setVelocity(-56.0)
-                self.m3_motor.setVelocity(-56.0)
+                elif current_position[1] == self.current_target[1]:
+                    self.m2_motor.setVelocity(55.5)
+                    self.m4_motor.setVelocity(55.0)
+                    self.m1_motor.setVelocity(-55.0)
+                    self.m3_motor.setVelocity(-55.5)
 
 
             # Déplacement en z
@@ -199,17 +159,18 @@ class Robot3(Robot):
 
                     # Déplacement vers le haut
                     print("Déplacement vers le haut (z)")  # Debug
-                    self.m1_motor.setVelocity(-56.0)
-                    self.m2_motor.setVelocity(56.0)
-                    self.m3_motor.setVelocity(-56.0)
-                    self.m4_motor.setVelocity(56.0)
+                    self.m1_motor.setVelocity(-55.5)
+                    self.m2_motor.setVelocity(55.5)
+                    self.m3_motor.setVelocity(-55.5)
+                    self.m4_motor.setVelocity(55.5)
 
                     # Stabilisation à la même altitude
                 elif current_position[2] == self.current_target[2]:
-                    self.m1_motor.setVelocity(-56.0)
-                    self.m2_motor.setVelocity(56.0)
-                    self.m3_motor.setVelocity(-56.0)
-                    self.m4_motor.setVelocity(56.0)
+                    print("Altitude du waypoint atteinte")
+                    self.m1_motor.setVelocity(-55.0)
+                    self.m2_motor.setVelocity(55.0)
+                    self.m3_motor.setVelocity(-55.0)
+                    self.m4_motor.setVelocity(55.0)
 
                 else:
 
@@ -223,21 +184,21 @@ class Robot3(Robot):
             else:
 
                 # Arrêt des moteurs en z
-                self.m1_motor.setVelocity(55.0)
+                self.m1_motor.setVelocity(-55.0)
                 self.m2_motor.setVelocity(55.0)
-                self.m3_motor.setVelocity(55.0)
+                self.m3_motor.setVelocity(-55.0)
                 self.m4_motor.setVelocity(55.0)
 
 
     def land_drone(self):
 
         # Atterrissage en douceur
-        if self.base_speed > 0.0:
-            self.base_speed -= 2.0
+        if self.base_speed > 55.0:
+            self.base_speed -= 0.1
 
         else:
 
-            self.base_speed = 0.0
+            self.base_speed = 55.0
             print("Le drone a atterri")
         self.m1_motor.setVelocity(-self.base_speed)
         self.m2_motor.setVelocity(self.base_speed)
