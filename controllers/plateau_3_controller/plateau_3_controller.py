@@ -78,7 +78,7 @@ class Robot3(Robot):
         distance = ((current_position[0] - point[0]) ** 2 +
                     (current_position[1] - point[1]) ** 2 +
                     (current_position[2] - point[2]) ** 2) ** 0.5
-        print(f"Distance calculée entre {current_position} et {point} : {distance}")  
+        #print(f"Distance calculée entre {current_position} et {point} : {distance}")  
         return distance
 
 
@@ -101,7 +101,7 @@ class Robot3(Robot):
                 self.landing = True  # Déclencher l'atterrissage
 
         else:
-
+            pass
             #print(f"Le point de passage actuel est {self.current_target}")  # Debug
 
 
