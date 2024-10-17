@@ -21,26 +21,22 @@ class SolidSnake(Robot):
         pos_cotedroit_avant = self.capteurs.detectdroite_avant()
         pos_avant = self.capteurs.detectavant()
 
-        if pos_avant > 300 : 
+        if pos_avant > 260 : 
             self.moteur.tourne_droite()
 
         if pos_cotegauche_avant > 300 and pos_cotedroit_avant > 300 :
             self.moteur.avance()
         
-        elif pos_cotegauche_avant > 300 and pos_cotegauche_avant > pos_cotedroit_avant: 
+        elif pos_cotegauche_avant > 260 and pos_cotegauche_avant > pos_cotedroit_avant: 
             self.moteur.tourne_gauche()
 
-        elif pos_cotedroit_avant > 300 and pos_cotedroit_avant >  pos_cotegauche_avant:
+        elif pos_cotedroit_avant > 260 and pos_cotedroit_avant >  pos_cotegauche_avant:
             self.moteur.tourne_droite()
 
         else :
             self.moteur.avance()
 
-        
-
-
-
-
+    
 #================================================================
 #                           Moteurs
 #================================================================
@@ -255,16 +251,8 @@ robot = SolidSnake()
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
 
-# You should insert a getDevice-like function in order to get the
-# instance of a device of the robot. Something like:
-#  motor = robot.getDevice('motorname')
-#  ds = robot.getDevice('dsname')
-#  ds.enable(timestep)
-
-# Main loop:
-# - perform simulation steps until Webots is stopping the controller
+#C'est la boucle la vraie
 while robot.step(timestep) != -1:
     robot.run()
     pass
 
-# Enter here exit cleanup code.
