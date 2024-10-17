@@ -67,7 +67,7 @@ class Robot3(Robot):
 
         # Récupération de la position GPS actuelle
         current_position = self.gps.getValues()
-        print(f"Position actuelle récupérée: {current_position}")  
+        #print(f"Position actuelle récupérée: {current_position}")  
         return current_position
 
 
@@ -87,13 +87,13 @@ class Robot3(Robot):
         # Choix du prochain point de passage si le point actuel est atteint
         if self.current_target and self.distance_to_point(self.current_target) < self.position_tolerance:
 
-            print(f"Point de passage atteint: {self.current_target}")  # Debug
+            #print(f"Point de passage atteint: {self.current_target}")  # Debug
             self.checked_waypoints.append(self.current_target)
             remaining_waypoints = [p for p in self.waypoints if p not in self.checked_waypoints]
 
             if remaining_waypoints:
                 self.current_target = remaining_waypoints[0]
-                print(f"Nouveau point de passage sélectionné: {self.current_target}")  # Debug
+                #print(f"Nouveau point de passage sélectionné: {self.current_target}")  # Debug
 
             else:
 
@@ -102,7 +102,7 @@ class Robot3(Robot):
 
         else:
 
-            print(f"Le point de passage actuel est {self.current_target}")  # Debug
+            #print(f"Le point de passage actuel est {self.current_target}")  # Debug
 
 
     def move_to_target(self):
@@ -116,7 +116,7 @@ class Robot3(Robot):
                 if current_position[2] < self.current_target[2]:
 
                     # Déplacement vers le haut
-                    print("Déplacement vers le haut")  # Debug
+                    #print("Déplacement vers le haut")  # Debug
                     self.m1_motor.setVelocity(-55.99)
                     self.m2_motor.setVelocity(55.99)
                     self.m3_motor.setVelocity(-55.99)
@@ -125,7 +125,7 @@ class Robot3(Robot):
                 else:
 
                     # Déplacement vers le bas
-                    print("Déplacement vers le bas")  # Debug
+                    #print("Déplacement vers le bas")  # Debug
                     self.m1_motor.setVelocity(-55.0001)
                     self.m2_motor.setVelocity(55.0001)
                     self.m3_motor.setVelocity(-55.0001)
@@ -134,7 +134,7 @@ class Robot3(Robot):
             if self.phase_timer >= self.phase_duration_z:
                 self.movement_phase="y" # Passage à la phase y
                 self.phase_imer = 0
-                print("Passage à la phase y")
+                #print("Passage à la phase y")
 
         elif self.movement_phase == "y":
             # Déplacement en y
@@ -143,14 +143,14 @@ class Robot3(Robot):
                 if current_position[0] < self.current_target[0]:
 
                     # Déplacement vers la droite
-                    print("Déplacement vers la droite") 
+                    #print("Déplacement vers la droite") 
                     self.m4_motor.setVelocity(55.102)
                     self.m2_motor.setVelocity(55.101)
                     self.m3_motor.setVelocity(-55.102)
                     self.m1_motor.setVelocity(-55.101)
 
                 else:
-                    print("Déplacement vers la gauche")
+                    #print("Déplacement vers la gauche")
                     self.m4_motor.setVelocity(55.101)
                     self.m2_motor.setVelocity(55.102)
                     self.m3_motor.setVelocity(-55.101)
@@ -159,7 +159,7 @@ class Robot3(Robot):
             if self.phase_timer >= self.phase_duration_x:
                 self.movement_phase="x" # Passage à la phase x
                 self.phase_timer = 0
-                print("Passage à la phase x")
+                #print("Passage à la phase x")
 
         elif self.movement_phase == "x":
             # Déplacement en x
@@ -167,7 +167,7 @@ class Robot3(Robot):
                 if current_position[1] < self.current_target[1]:
 
                     # Déplacement vers l'avant
-                    print("Déplacement vers l'avant") 
+                    #print("Déplacement vers l'avant") 
                     self.m2_motor.setVelocity(55.102)
                     self.m4_motor.setVelocity(55.101)
                     self.m1_motor.setVelocity(-55.101)
@@ -175,7 +175,7 @@ class Robot3(Robot):
 
                     # Déplacement vers l'arrière
                 else: 
-                    print("Déplacent vers l'arrière")
+                    #print("Déplacent vers l'arrière")
                     self.m2_motor.setVelocity(55.101)
                     self.m4_motor.setVelocity(55.102)
                     self.m1_motor.setVelocity(-55.102)
@@ -184,7 +184,7 @@ class Robot3(Robot):
             if self.phase_timer >= self.phase_duration_y:
                 self.movement_phase="z" # Passage à la phase y
                 self.phase_timer = 0
-                print("Passage à la phase z")
+                #print("Passage à la phase z")
 
         
 
@@ -198,7 +198,7 @@ class Robot3(Robot):
         else:
 
             self.base_speed = 55.0
-            print("Le drone a atterri")
+            #print("Le drone a atterri")
         self.m1_motor.setVelocity(-self.base_speed)
         self.m2_motor.setVelocity(self.base_speed)
         self.m3_motor.setVelocity(-self.base_speed)
@@ -210,13 +210,13 @@ class Robot3(Robot):
 
         if not self.landing:
 
-            print("Le drone est en vol")  # Debug
+            #print("Le drone est en vol")  # Debug
             self.choose_next_point()  # Choisir le prochain point si le drone est proche du précédent
             self.move_to_target()  # Se déplacer vers le point choisi
 
         else:
 
-            print("Le drone est en train d'atterrir")  # Debug
+            #print("Le drone est en train d'atterrir")  # Debug
             self.land_drone()
 
 
