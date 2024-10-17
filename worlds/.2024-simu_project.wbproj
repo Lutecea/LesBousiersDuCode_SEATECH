@@ -7,3 +7,4 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: 0 "../../../../../../usr/local/webots/projects/robots/irobot/create/controllers/create_avoid_obstacles/create_avoid_obstacles.c"
 consoles: Console:All:All
+renderingDevicePerspectives: Le blaireau:camera;1;1;0;0

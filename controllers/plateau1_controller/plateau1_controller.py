@@ -20,16 +20,16 @@ class Saucisse(Robot):
         pos_cotedroit_avant = self.capteurs.detectdroite_avant()
         pos_avant = self.capteurs.detectavant()
 
-        if pos_avant > 300 : 
+        if pos_avant > 330 : 
             self.moteur.tourne_droite()
 
-        if pos_cotegauche_avant > 800 and pos_cotedroit_avant > 800 :
+        if pos_cotegauche_avant > 350 and pos_cotedroit_avant > 350 :
             self.moteur.avance()
         
-        elif pos_cotegauche_avant > 300 and pos_cotegauche_avant > pos_cotedroit_avant: 
+        elif pos_cotegauche_avant > 350 and pos_cotegauche_avant > pos_cotedroit_avant: 
             self.moteur.tourne_gauche()
 
-        elif pos_cotedroit_avant > 300 and pos_cotedroit_avant >  pos_cotegauche_avant:
+        elif pos_cotedroit_avant > 350 and pos_cotedroit_avant >  pos_cotegauche_avant:
             self.moteur.tourne_droite()
 
         else :
@@ -65,8 +65,8 @@ class Moteurs():
 
     def avance(self):
         #print("J'AVANCE LE SANG")
-        self.right_wheel.setVelocity(10.0)
-        self.left_wheel.setVelocity(10.0)
+        self.right_wheel.setVelocity(12.0)
+        self.left_wheel.setVelocity(12.0)
 
     def recule(self):
         #print("JE RECULE LE SANG")
@@ -80,7 +80,7 @@ class Moteurs():
 
     def tourne_gauche(self):
         #print("JE TOURNE A GAUCHE LE SANG")
-        self.right_wheel.setVelocity(10.0)
+        self.right_wheel.setVelocity(11.0)
         self.left_wheel.setVelocity(-2.0)
 
 #================================================================

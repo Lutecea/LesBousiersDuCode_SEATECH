@@ -18,8 +18,10 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/HighwayPole.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/HighwaySign.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/bitcraze/crazyflie/protos/Crazyflie.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/garden/protos/Gnome.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
 
 WorldInfo {
   basicTimeStep 20
@@ -28,7 +30,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 0.23329146309894216 -0.7203398294122577 -0.6532117753129336 5.535702427195413
-  position -100.70471867114213 -26.034949510318192 59.68895005236383
+  position -74.13241340083864 -21.40533863109525 43.51496801459069
 }
 TexturedBackgroundLight {
 }
@@ -248,8 +250,6 @@ Road {
   leftBorderBoundingObject TRUE
 }
 RubberDuck {
-  hidden linearVelocity_0 -0.0033614648410333794 0.00347016082319855 0.0007350609520169213
-  hidden angularVelocity_0 -0.011510786599655909 -0.011150233779659815 1.1944872445400934e-11
   translation -43.70515778930104 31.57782632584047 4.714914408553832
   rotation -0.000753550653627021 -0.0017790711383905158 -0.9999981335319066 0.8013088056796847
   scale 14
@@ -270,43 +270,30 @@ TrafficCone {
   name "traffic cone(1)"
 }
 RubberDuck {
-  hidden linearVelocity_0 -0.009895665531954544 -0.009596883796437973 0.00020284835904041507
-  hidden angularVelocity_0 0.031236673989500568 -0.03220896465235854 5.91142129898764e-09
   translation -14.995663340018206 33.076490526087184 4.730647840586313
   rotation 0.00033741846782303696 -0.0008311800457992654 0.9999995976441736 0.7701358245981503
   name "rubber duck(2)"
   scale 18
 }
-Pioneer3dx {
-  hidden position_0_0 -2.4478744839071493e-07
-  hidden position_0_1 8114.810289315713
-  hidden position_0_2 8135.012238452329
-  hidden linearVelocity_0 0.4635371755772517 0.20936034351348767 1.022102394040128e-13
-  hidden angularVelocity_0 -1.2387058687743983e-07 -5.591752176021645e-08 4.29014264785467e-07
-  hidden translation_1 -0.1918 0 0
-  hidden rotation_1 0.5773501749708901 -0.5773503162989837 -0.577350316298992 2.0943951413281052
-  hidden position_1_0 -20969.071964859373
-  hidden linearVelocity_1 0.4635371906323973 0.2093603101753488 3.35913074579141e-12
-  hidden angularVelocity_1 -1.2088553568298063e-07 -5.4569471380439725e-08 4.3805022637945684e-07
-  hidden translation_2 0 -0.0521014 0.012843
-  hidden rotation_2 1 0 0 4.20059050608655
-  hidden linearVelocity_2 0.4635371798453876 0.20936033406204166 3.312229552109348e-12
-  hidden angularVelocity_2 -5.582942179464048 12.360991185659797 -3.684409546280119e-07
-  hidden translation_4 0 0.165 0
-  hidden rotation_4 0.5915128630066333 -0.5915129303666576 0.5479279022889285 4.144094563876881
-  hidden linearVelocity_4 0.4635371698404316 0.20936034360607655 -2.11586712981262e-08
-  hidden angularVelocity_4 -2.1472891973628134 4.754235429261992 4.2702522143033806e-07
-  hidden translation_9 0 -0.165 0
-  hidden rotation_9 -0.7062150966288128 0.7062151413458266 -0.05020369934029742 3.0412695609238596
-  hidden linearVelocity_9 0.46353717930148913 0.20936034786728525 2.1155799215030897e-08
-  hidden angularVelocity_9 -2.1472891999066364 4.754235434412588 4.25801400155805e-07
-  translation 635.7161871278124 311.04988279256213 0.09693262893368734
-  rotation 0.01897537881187792 -0.08811187677070716 0.9959298329555598 0.4259138827821046
-}
 Crazyflie {
-  hidden linearVelocity_0 -5.571664985458786e-15 -2.860684042129179e-12 5.061074834980987e-05
-  hidden angularVelocity_0 -1.2269526412119342e-14 9.739241234672117e-17 1.7191610949997852e-31
-  translation -2.0422666556669647e-12 -1.2103824034182346e-09 1.0584118832136722
   rotation 0.9980656780066601 -0.007130710677753083 -0.06175803875072578 4.022393266928818e-14
-  controller "plateau_3_controller"
+  name "Le blaireau"
+  controller "<none>"
+}
+Pioneer3dx {
+  translation -15 -15.5 0.1
+  name "Gnominator"
+  extensionSlot [
+    Gnome {
+    }
+  ]
+}
+Pioneer3dx {
+  translation -16 23 0.03
+  rotation 0 0 1 2.354
+  name "Solid Snake"
+  extensionSlot [
+    CardboardBox {
+    }
+  ]
 }
