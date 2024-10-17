@@ -29,10 +29,10 @@ class Saucisse(Robot):
         if pos_cotegauche_avant > 800 and pos_cotedroit_avant > 800 :
             self.moteur.avance()
         
-        elif pos_cotegauche_avant > 330 and pos_cotegauche_avant > pos_cotedroit_avant: 
+        elif pos_cotegauche_avant > 300 and pos_cotegauche_avant > pos_cotedroit_avant: 
             self.moteur.tourne_gauche()
 
-        elif pos_cotedroit_avant > 330 and pos_cotedroit_avant >  pos_cotegauche_avant:
+        elif pos_cotedroit_avant > 300 and pos_cotedroit_avant >  pos_cotegauche_avant:
             self.moteur.tourne_droite()
 
         else :
@@ -72,22 +72,22 @@ class Moteurs():
         self.left_wheel.setVelocity(-10.0)
 
     def avance(self):
-        print("J'AVANCE LE SANG")
+        #print("J'AVANCE LE SANG")
         self.right_wheel.setVelocity(10.0)
         self.left_wheel.setVelocity(10.0)
 
     def recule(self):
-        print("JE RECULE LE SANG")
+        #print("JE RECULE LE SANG")
         self.right_wheel.setVelocity(10.0)
         self.left_wheel.setVelocity(-10.0)
 
     def tourne_droite(self):
-        print("JE TOURNE A DROITE LE SANG")
+        #print("JE TOURNE A DROITE LE SANG")
         self.right_wheel.setVelocity(-10.0)
         self.left_wheel.setVelocity(10.0)
 
     def tourne_gauche(self):
-        print("JE TOURNE A GAUCHE LE SANG")
+        #print("JE TOURNE A GAUCHE LE SANG")
         self.right_wheel.setVelocity(10.0)
         self.left_wheel.setVelocity(-2.0)
 
@@ -217,18 +217,18 @@ class Capteurs():
 
     def detectavant(self):
         valueavant = self.get_PositionSensorso3() + self.get_PositionSensorso4() / 2
-        print(f"AVANT : {valueavant}" )
+        #print(f"AVANT : {valueavant}" )
         return valueavant
     
     def detectdroite_avant(self):
         val = (self.get_PositionSensorso0() +self.get_PositionSensorso1() + self.get_PositionSensorso2()) /3
-        print(f"DROITE : {val}" )
+        #print(f"DROITE : {val}" )
         return val
     
 
     def detectgauche_avant(self):
         val = (self.get_PositionSensorso7() +self.get_PositionSensorso6() + self.get_PositionSensorso5() )/3
-        print(f"GAUCHE : {val}" )
+        #print(f"GAUCHE : {val}" )
         return val
 
 

@@ -20,7 +20,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/garden/protos/Gnome.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/irobot/create/protos/Create.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/CardboardBox.proto"
 
 WorldInfo {
   basicTimeStep 20
@@ -28,8 +28,8 @@ WorldInfo {
   }
 }
 Viewpoint {
-  orientation -0.01901034859679488 -0.9544358860223243 0.2978099160857627 5.724456888631362
-  position -19.54086214957052 23.459945164183054 2.2739880865621016
+  orientation 0.23329146309894216 -0.7203398294122577 -0.6532117753129336 5.535702427195413
+  position -28.956011047925035 13.861318252540496 10.63723383116649
 }
 TexturedBackgroundLight {
 }
@@ -50,34 +50,26 @@ RectangleArena {
   wallHeight 0.5
 }
 Pioneer3dx {
-  hidden linearVelocity_0 0.9250047400752117 0.2941788225962897 -1.861176830458314e-07
-  hidden angularVelocity_0 -1.1598835290138043e-06 1.29911819595495e-06 7.828436612811984e-05
-  hidden translation_1 -0.1918 0 0
-  hidden rotation_1 0.577319290625517 -0.5773657578470003 -0.5773657578497438 2.0944414684681094
-  hidden linearVelocity_1 0.9250171118227893 0.29413977502421135 -9.516284750634146e-09
-  hidden angularVelocity_1 2.82065694681699e-07 1.6719466022568082e-06 -3.389731844408969e-05
-  hidden translation_2 0 -0.0521014 0.012843
-  hidden rotation_2 -1 0 0 2.6519462672508753
-  hidden linearVelocity_2 0.9250264504591259 0.2941106807056791 -2.693003975890559e-08
-  hidden angularVelocity_2 -7.843111049875463 24.667320717235086 -0.00037705243770209604
-  hidden translation_4 0 0.165 0
-  hidden rotation_4 -0.45150131940475957 0.4515013915926412 -0.7696057769830406 1.8297302635433996
-  hidden linearVelocity_4 0.9250081005947121 0.29418118770902707 -3.721135176678454e-07
-  hidden angularVelocity_4 -3.0173863665454426 9.487193102720253 7.376382857585103e-05
-  hidden translation_9 0 -0.165 0
-  hidden rotation_9 -0.4781594275418887 0.47815941225780384 0.7367001685367562 4.411462222390313
-  hidden linearVelocity_9 0.9249888020321578 0.2942150212186577 -1.5221919996066996e-07
-  hidden angularVelocity_9 -3.017395274315449 9.48718554450769 6.118965508323612e-05
-  translation -14.50700229987634 -15.240603517850424 0.09693864163524767
-  rotation 0.01895126525075627 -0.12212152363105415 0.9923342093324331 0.3102748435188087
+  translation -15 -15.5 0.1
+  name "Gnominator"
   controller "plateau1_controller"
   extensionSlot [
     Gnome {
     }
   ]
 }
+Pioneer3dx {
+  translation -16 23 0.03
+  rotation 0 0 1 2.354
+  name "SolidSNake"
+  controller "plateau2_controller"
+  extensionSlot [
+    CardboardBox {
+    }
+  ]
+}
 Ramp30deg {
-  translation -14.1511 19.1333 3.55271e-15
+  translation -14.3443 19.0813 3.55271e-15
   rotation 0 0 1 1.8326
 }
 RectangleArena {
@@ -276,15 +268,13 @@ Road {
   leftBorderBoundingObject TRUE
 }
 RubberDuck {
-  hidden linearVelocity_0 0.000932752235281348 -0.0009629135945489575 0.0004746260902423521
-  hidden angularVelocity_0 0.005018550541444466 0.004861354373464068 1.1221432268603383e-11
-  translation -43.70497200624905 31.577634538336458 4.714920907993856
-  rotation -0.00027233708634017003 -0.0006429654617824517 -0.9999997562139336 0.8013076383948894
+  translation -43.70497911738346 31.577641879670335 4.714920906554506
+  rotation -0.00027162182794227197 -0.0006412767960412532 -0.9999997574927975 0.80130763739264
   scale 14
 }
 RubberDuck {
-  translation 6.761924710385914 -9.708523712199028 0.44271073725506654
-  rotation -0.00019387379854910388 -2.2973881985678524e-05 0.9999999809425753 -2.9056944863652423
+  translation 6.761924710385609 -9.708523712198213 0.4427107372551994
+  rotation -0.00019387379872961972 -2.2973881239406827e-05 0.9999999809425751 -2.9056944863652627
   name "rubber duck(1)"
   scale 30
 }
@@ -298,26 +288,8 @@ TrafficCone {
   name "traffic cone(1)"
 }
 RubberDuck {
-  hidden linearVelocity_0 0.009709919776500334 0.009433271691944457 -0.00012291825147069859
-  hidden angularVelocity_0 -0.027397764612399036 0.028199627886925094 5.155260096088283e-07
-  translation -14.968021129038513 33.103217976355126 4.73058405634987
-  rotation -0.0006909044195287985 0.0017072481392720932 0.9999983039759988 0.7708236422102418
+  translation -14.96574188489921 33.105423572669 4.730567440912543
+  rotation -0.0007037116807781012 0.0017385312241349534 0.9999982411479797 0.770878875938409
   name "rubber duck(2)"
   scale 18
-}
-Create {
-  translation -15.7967 23.4742 0.044
-  bodySlot [
-    DistanceSensor {
-      rotation 0 0 1 -0.523595307179586
-      name "distance sensor droit"
-    }
-    DistanceSensor {
-      translation 0.09 0 0
-      rotation 1 0 0 -0.785395307179586
-      name "distance sensor gauche"
-    }
-    GPS {
-    }
-  ]
 }
